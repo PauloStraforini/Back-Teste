@@ -41,7 +41,11 @@ router.post("/", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !validator.isEmail(email.trim())) {
-      return void res.status(400).json({ message: "Invalid email address" });
+      return void res.status(400).json({ message: "Email inválido" });
+    }
+
+    if (!password || password.length < 6) {
+      return void res.status(400).json({ message: "Senha muito curta" });
     }
 
     const user = await User.create({ email, password });
@@ -50,12 +54,13 @@ router.post("/", async (req, res) => {
     console.log(error);
     if (error instanceof ValidationError) {
       return void res.status(400).json({
-        message: "Validation Error",
+        message: "Erro de validação",
         errors: error.errors.map((err) => err.message),
       });
     }
-    return void res.status(500).json({ message: "Internal server error" });
+    return void res.status(500).json({ message: "Erro interno do servidor" });
   }
 });
+
 
 export default router;

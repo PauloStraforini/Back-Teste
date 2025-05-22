@@ -30,11 +30,6 @@ export class User extends Model {
   email!: string;
 
   @AllowNull(false)
-  @Length({ min: 2, max: 255 })
-  @Column(DataType.STRING)
-  name!: string;
-
-  @AllowNull(false)
   @Length({ min: 6 })
   @Column(DataType.STRING)
   password!: string;
