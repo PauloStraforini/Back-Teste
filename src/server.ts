@@ -4,19 +4,21 @@ import { sequelize } from "./database/sequelize";
 import userRouter from "./routes/user.routes";
 import postRouter from "./routes/post.routes";
 
+import cors from "cors"; 
+
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/posts", postRouter);
 
 const main = async () => {
   try {
-    // await sequelize.sync(); // Sincroniza la base de datos
-    // await sequelize.sync({ force: true }); // Sincroniza la base de datos y elimina los datos existentes
-    await sequelize.sync({ alter: true }); // Sincroniza la base de datos y modifica las tablas existentes
+    await sequelize.sync({ alter: true }); 
     console.log("Connection has been established successfully.");
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);

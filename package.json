@@ -20,6 +20,7 @@
   "homepage": "https://github.com/PauloStraforini/Back-Teste#readme",
   "dependencies": {
     "@types/express": "^5.0.2",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.7",
@@ -27,5 +28,8 @@
     "sqlite3": "^5.1.7",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18"
   }
 }

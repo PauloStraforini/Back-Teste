@@ -38,13 +38,13 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { email, name } = req.body;
+    const { email, password } = req.body;
 
     if (!email || !validator.isEmail(email.trim())) {
       return void res.status(400).json({ message: "Invalid email address" });
     }
 
-    const user = await User.create({ email, name });
+    const user = await User.create({ email, password });
     return void res.status(201).json(user);
   } catch (error) {
     console.log(error);
