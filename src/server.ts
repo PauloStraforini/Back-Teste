@@ -3,15 +3,15 @@ import { sequelize } from "./database/sequelize";
 
 import userRouter from "./routes/user.routes";
 import postRouter from "./routes/post.routes";
-
 import cors from "cors"; 
 
 
+
 const app = express();
-const PORT = process.env.PORT || 8080;
+app.use(cors({origin: "*", methods:["POST"] })); // Allow requests from the React app
+const PORT = 8080;
 
 app.use(express.json());
-app.use(cors());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/posts", postRouter);
