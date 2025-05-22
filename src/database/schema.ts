@@ -34,6 +34,11 @@ export class User extends Model {
   @Column(DataType.STRING)
   name!: string;
 
+  @AllowNull(false)
+  @Length({ min: 6 })
+  @Column(DataType.STRING)
+  password!: string;
+
   @HasMany(() => Post)
   posts!: Post[];
 }
